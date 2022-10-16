@@ -1,1 +1,4 @@
 .vscode
+./chromedriver.exe
+desktop.ini
+geckodriver.log
