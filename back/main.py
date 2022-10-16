@@ -19,13 +19,13 @@ heroes_role = []
 heroes_img = []
 hero = soup.find_all('span')
 role = soup.find_all('img', class_="heroCardRole")
+picture = soup.find_all('blz-image', class_="heroCardPortrait")
 
 def get_name():
     for name in hero:
         heroes_name.append(name.string)
     return heroes_name
 get_name()
-
 
 def get_role ():
     for herorole in role:
@@ -34,12 +34,16 @@ def get_role ():
     return heroes_role
 get_role()
 
+def get_picture():
+    for heroes_picture in picture:
+        hero_picture = heroes_picture.attrs.get("src")
+        heroes_img.append(hero_picture)
+    return heroes_img
+get_picture()
 
-
+print(heroes_img)
 ##suppression des span non désiré
 del heroes_name [0 : 4]
 del heroes_name [35 : 40]
-
-print(heroes_role)
 
 time.sleep(100)
