@@ -17,6 +17,7 @@ driver.get(url)
 heroes_name = []
 heroes_role = []
 heroes_img = []
+links_page = []
 hero = soup.find_all('span')
 role = soup.find_all('img', class_="heroCardRole")
 picture = soup.find_all('blz-image', class_="heroCardPortrait")
@@ -24,6 +25,7 @@ picture = soup.find_all('blz-image', class_="heroCardPortrait")
 def get_name():
     for name in hero:
         heroes_name.append(name.string)
+     
     return heroes_name
 get_name()
 
@@ -41,9 +43,19 @@ def get_picture():
     return heroes_img
 get_picture()
 
-print(heroes_img)
+def get_link():
+    for heroes_n in heroes_name:
+        newurl = heroes_n.lower()
+        links_page.append(url + newurl)
+    return links_page
+get_link()
+
 ##suppression des span non désiré
 del heroes_name [0 : 4]
 del heroes_name [35 : 40]
+del links_page [0 : 4]
+del links_page [35 : 40]
+
+print(links_page)
 
 time.sleep(100)
